@@ -1,0 +1,8 @@
+Carlos Parra Marcelo - 100304942@alumnos.uc3m.es
+Alejandro Borrego Iglesias - 100283189@alumnos.uc3m.es
+Grupo 66
+
+Compilación:
+gcc -Wall -c CFunciones.c
+gcc -Wall -c CLista.c
+gcc -Wall -o programa CMain.c CFunciones.o CLista.o
