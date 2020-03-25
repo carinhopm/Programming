@@ -1,0 +1,197 @@
+<!DOCTYPE html> <!-- Documento en HTML5 -->
+
+<html Lang="es"> <!-- Idioma Español -->
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html"  charset="ISO-10642"/> <!-- Incluimos caracteres del español -->
+        <script type="text/javascript" src="javascript/java.js"></script>
+        <script type="text/javascript" src="javascript/juego.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+        <title> BANANINO </title>
+    </head>
+
+    <body background="img/fondo_bananas.jpg">
+
+            <header>
+            <img src="img/Bananino.png" width="40%" >
+            <nav id=main>
+                    <span id=pestana0 class="tab currentab"><img src="img/bot_inicio.png" width="12%"/></span>
+                    <span id=pestana1 class="tab"><img src="img/bot_juego.png" width="12%"/></span>
+                    <span id=pestana2 class="tab"><img src="img/bot_descripcion.png" width="12%"/></span>
+                    <span id=pestana3 class="tab"><img src="img/bot_autores.png" width="12%"/></span>
+                    <span id=pestana4 class="tab"><img src="img/bot_referencias.png" width="12%"/></span>
+            </nav>
+            </header>
+
+            <section id= "inicio" class= "content current" >
+			<h2>¡Ayuda al mono Bananino a alcanzar la Banana Dorada!</h2>
+			<div class=movil><h2>Movil detectado. Sabias que...¡Ahora también puedes jugar desde tu móvil!</h2></div>
+            <div>
+                <div class=izda>
+                    <div id=boton class=tab >
+			<element  onclick="buttons( 1 )"><img src="img/bot_juego.png" width="30%" /> </element>
+                    </div>
+                    <div id=boton >
+                        <element  onclick="buttons( 2 )"><img  src="img/bot_descripcion.png" width="30%"  /></element>
+                    </div>
+                </div>
+                <div class=dcha>
+                    <div id=boton >
+                        <element  onclick="buttons( 3 )"><img src="img/bot_autores.png" width="30%" /></element>
+                    </div>
+                    <div id=boton >
+                        <element  onclick="buttons( 4 )"><img src="img/bot_referencias.png" width="30%"  /></element>
+                    </div>
+                </div>
+            </div>
+            <div class=tutorial>
+                <video controls id="videotutorial">
+					<source src="media/Bananino.mp4" type="video/mp4">
+				</video>
+            </div>
+			<p></p>
+			<a id="botonVideo" class="button" onclick="vidplay()"/>Ver controles rápidos</a>
+			<p><br/></p>
+            <div class=historia>
+                <h2>La Leyenda de la Banana Dorada</h2>
+                <p id = marron >Cuenta la Gran Leyenda Mona que en lo más alto del árbol sin cima crece la Mágica Banana Dorada que dota a su poseedor de un misterioso poder. Sólo los más ávidos héroes han conseguido hacerse con ella. <br><br>Bananino intentará conseguir la Banana Dorada para poder conseguir ser un mago de verdad, pero... ¡No será fácil!<br><br> Ayuda a Bananino a convertirse en un mago con poderes de verdad, ¡consigue la Banana Dorada! </p>
+            </div>
+            <p><br/><br/><br/><br/><br/><br/></p><!-- Para que el footer no tape el contenido de Inicio -->
+        </section>
+        <section  class="content">
+            <h2>JUEGO</h2>
+            <script type="application/javascript" src="javascript/juego.js"></script>
+		<p id="canvas_centro">
+                <canvas id="juego" width="600" height="400" style="background: #58B4FF">
+                    Tu navegador no soporta Canvas
+                </canvas>
+            </p>
+	<p><br /><br /><br /><br /><br /><br /></p><!-- Para que el footer no tape el contenido de Juego -->
+        </section>
+
+        <section id="descripcion" class="content">
+            <h2>DESCRIPCIÓN</h2>
+            <div id="contenedor">
+                <p id = marron>¡Aprende a guiar a Bananino!</p>
+            </div>
+            <div id="contenedor">
+                <div id="contenidos">	
+                    <div class=no_movil id="columna1">
+                        Usa las flechas de dirección para desplazarte a derecha e izquierda
+                    </div>
+                    <div class=no_movil id="columna2">
+                        <IMG src="img/teclas-cursor.png">
+                    </div>
+		    <div class=movil >
+                        <IMG src="img/teclas-cursor_movil.png">
+                    </div>
+                    <div class=movil >
+                        Usa los botones con flechas para desplazarte a derecha e izquierda
+                    </div>
+                </div>
+                <div id="contenidos">
+                    <div class=no_movil id="columna1">
+                        Utiliza la barra espaciadora para saltar
+                    </div>
+                    <div class=no_movil id="columna2">
+                        <IMG src="img/barra-espaciadora.png">
+                    </div>
+                    <div class=movil >
+                        <IMG src="img/barra-espaciadora_movil.png">
+                    </div>    
+		    <div class=movil >
+                        Utiliza la el botón SALTA para saltar
+                    </div>         
+	        </div>
+                <div id="contenidos">
+                    <div class=no_movil id="columna1">
+                        Utiliza enter para iniciar el juego, ponerlo en pausa o reanudarlo
+                    </div>
+                    <div class=no_movil id="columna2">
+                        <IMG src="img/tecla-enter.png">
+                    </div>
+		    <div class=movil >
+                        <IMG src="img/intro_movil.png">
+                    </div>
+		    <div class=movil >
+                        Pulsa el botón PAUSA para iniciar el juego, ponerlo en pausa o reanudarlo
+                    </div>
+                </div>
+            </div>
+            <div id="contenedor">
+                <p id = marron>¡Puntuación!</p>
+                <div>
+                    <p id="textScore">
+                        Bananino quiere llegar a la meta pronto, y por el camino coger muchos plátanos.
+                        <br/>La puntuación de cada nivel se calcula así:
+						<br/>
+						<br/>Puntuación = (Número de bananas) + 25 - ((Tiempo Nivel)/2)
+						<br/>
+						<br/>¡Pero cuidado!
+                        <br/>Si se pincha o cae al vacío pierde una vida...
+                    </p>
+                </div>
+            </div>
+            <p><br/><br/><br/><br/><br/><br/></p><!-- Para que el footer no tape el contenido de Descripción -->
+        </section>
+
+        <section id="autores" class="content">
+            <h2>AUTORES DE LA PÁGINA</h2>
+            <div id="contenedor-slim">
+                <div id="contenidos">
+                    <div id="columna1">
+                        <IMG src="img/fotopatri.png" width= 50%>
+                    </div>
+                    <div id="columna2">
+                        Patricia Carrera<br/>NIA: 100304633
+                    </div>
+                </div>
+                <div id="contenidos">
+                    <div id="columna1">
+                        <IMG src="img/fotocarlos.png" width= 50%>
+                    </div>
+                    <div id="columna2">
+                        Carlos Parra<br/>NIA: 100304942
+                    </div>
+                </div>
+                <div id="contenidos">
+                    <div id="columna1">
+                        <IMG src="img/fotomaria.png" width= 50%>
+                    </div>
+                    <div id="columna2">
+                        María Palomino<br/>NIA: 100073781
+                    </div>
+                </div>
+                <div id="contenidos">
+                    <div id="columna1">
+                        <IMG src="img/fototirso.png" width= 50%>
+                    </div>
+                    <div id="columna2">
+                        Tirso Vargas<br />NIA: 100345397
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="referencias" class="content">
+            <h2>REFERENCIAS</h2>
+            <div id="contenedor">
+                <p>
+                    Para la llevar a cabo esta página hemos utilizado información sobre:
+                    <br/><br/><br/>Para html y css nos hemos basado en las diapositivas de clase y en las páginas <a href="http://www.w3schools.com/html/">w3schools.com</a>
+                    <br/><br/> Para javaScript, en el funcionamiento de los botones y la navegación utilizamos el código
+                    <br/>que se nos facilita en AulaGobal de la UC3M
+                    <br/><br/>Y por último, para la programación en canvas del juego BANANINO hemos utilizado como base el tutorial de <a href="http://juegos.canvas.ninja/">juegos.canvas.ninja</a>
+                </p>
+            </div>
+        </section>
+		
+        <footer>
+            <p
+                Aplicaciones Multimedia: Proyecto de tecnologías web
+                <br/>Universidad Carlos III de Madrid
+                <br/>Curso 2015/2016
+            </p>
+        </footer>
+    </body>
+</html>

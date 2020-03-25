@@ -1,0 +1,29 @@
+MOSTRAR IMAGEN:
+gst-launch-1.0 multifilesrc location="img.jpg" caps="image/jpeg,framerate=1/1" ! jpegdec ! videoconvert ! videorate ! ximagesink
+
+MOSTRAR VIDEO:
+gst-launch-1.0 filesrc location="music.mp3" ! decodebin ! tee name="decoder" decoder. ! queue ! audioconvert ! alsasink decoder. ! queue ! audioconvert ! goom ! ximagesink
+
+MOSTRAR VIDEO CON TEXTO:
+gst-launch-1.0 filesrc location="music.mp3" ! decodebin ! tee name="decoder" decoder. ! queue ! audioconvert ! alsasink decoder. ! queue ! audioconvert ! goom ! textoverlay font-desc="Sans Bold 30" text='GOOM' color=4294967040 ! ximagesink
+
+gst-launch-1.0 multifilesrc
+
+gst-launch-1.0 filesrc location="music.mp3" ! decodebin ! tee name="decoder" decoder. ! queue ! audioconvert ! alsasink decoder. ! queue ! audioconvert ! goom ! textoverlay font-desc="Sans Bold 30" text='GOOM' color=4294967040 ! mezclador. multifilesrc location="img.jpg" caps="image/jpeg,framerate=1/1" ! jpegdec ! videoconvert ! videorate ! mezclador. videomixer name=mezclador ! ximagesink
+
+MOSTRAR REQUISITO 1:
+gst-launch-1.0 videomixer name=mix ! ximagesink \
+multifilesrc location="img.jpg" caps="image/jpeg,framerate=1/1" ! jpegdec ! videoconvert ! videorate ! mix. \
+filesrc location="music.mp3" ! decodebin ! tee name="decoder" decoder. ! queue ! audioconvert ! alsasink \
+decoder. ! queue ! audioconvert ! goom ! textoverlay font-desc="Sans Bold 30" text='GOOM' color=4294967040 ! mix.
+
+MOSTRAR REQUISITO 2:
+
+(Descarga video y lo guarda)
+gst-launch-1.0 souphttpsrc location="http://download.blender.org/peach/trailer/trailer_400p.ogg" ! filesink location="video_download.ogg"
+
+(Extrae el audio del video OGG y lo convierte a mp3)
+gst-launch-1.0 filesrc location=video_download.ogg ! oggdemux name = d d. ! queue ! vorbisdec ! audioconvert ! lamemp3enc ! id3v2mux ! filesink location=file.mp3
+
+(Hace las 2 cosas)
+gst-launch-1.0 souphttpsrc location="http://download.blender.org/peach/trailer/trailer_400p.ogg" ! oggdemux name = d d. ! queue ! vorbisdec ! audioconvert ! lamemp3enc ! id3v2mux ! filesink location=file.mp3
